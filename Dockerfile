@@ -45,7 +45,7 @@ RUN apt-get install -y\
 RUN useradd --system unbound
 ENV PATH $PATH:/usr/local/lib
 RUN ldconfig
-ADD assets/unbound.conf /usr/local/etc/unbound/unbound.conf
+COPY assets/unbound.conf /usr/local/etc/unbound/unbound.conf
 RUN chown -R unbound:unbound /usr/local/etc/unbound/
 RUN sudo -u unbound unbound-anchor -a /usr/local/etc/unbound/root.key ; true
 RUN sudo -u unbound unbound-control-setup
