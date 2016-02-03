@@ -43,5 +43,6 @@ sed 's/{{STATISTICS_INTERVAL}}/'"${STATISTICS_INTERVAL}"'/' -i /usr/local/etc/un
 sed 's/{{STATISTICS_CUMULATIVE}}/'"${STATISTICS_CUMULATIVE}"'/' -i /usr/local/etc/unbound/unbound.conf
 sed 's/{{EXTENDED_STATISTICS}}/'"${EXTENDED_STATISTICS}"'/' -i /usr/local/etc/unbound/unbound.conf
 
+build-unbound-localzone-from-hosts.pl
+track-changes-unbound-localzone.sh&
 /usr/local/sbin/unbound -c /usr/local/etc/unbound/unbound.conf -d -v
-#/bin/bash

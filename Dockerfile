@@ -27,7 +27,7 @@ RUN apt-get install -y\
 	&& make \
 	&& make install \
 	&& cd ../ \
-	&& rm -R unbound-${VERSION} \
+	#&& rm -R unbound-${VERSION} \
 	&& apt-get purge -y \
 	build-essential \
 	gcc \
@@ -46,6 +46,7 @@ RUN useradd --system unbound
 ENV PATH $PATH:/usr/local/lib
 RUN ldconfig
 COPY assets/unbound.conf /usr/local/etc/unbound/unbound.conf
+COPY assets/usr/local/bin /usr/local/bin/
 RUN chown -R unbound:unbound /usr/local/etc/unbound/
 RUN sudo -u unbound unbound-anchor -a /usr/local/etc/unbound/root.key ; true
 RUN sudo -u unbound unbound-control-setup
